@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	 xmlns:ctns="http://www.adidas.com/sef/ws/schema/commondata"
+	 xmlns:stns="http://www.adidas.com/sef/ws/schema/modeldata"
+	 jaxb:version="2.0"
+	 xml:lang="en"
+	 targetNamespace="http://www.adidas.com/sef/ws/schema/modeldata"
+	 id="modelService_schema"
+	 version="1.0"
+	 elementFormDefault="unqualified"
+	 attributeFormDefault="unqualified">
+
+	<!-- For all the service's request and response prefixed the #### to differentiate 
+		between the request & response and the Use case. -->
+	<!-- ####START: GetModelsById & Get Models With Full 
+		Attrbute SOAP response -->
+	<!-- The follwing response is common across two use cases (Get Model  
+		By Id and Get Models With Full Attributes), So named the response like "modelDetailResponse." -->
+	<!-- The follwing response is common across two use cases (Get Model By 
+		Id and Get Models With Full Attributes), So named the response like "getModelResponseType." -->
+	<!-- ####END: Output Response for "GetTechnicalMOdelIDs" -->
+	<!-- END: "GetTechnicalMOdelIDs" use case -->
+	<xs:import namespace="http://www.adidas.com/sef/ws/schema/commondata" schemaLocation="services_master_schema.xsd"/>
+
+	<!-- START: "Create Model" use case -->
+	<!-- ####START: Input Request for "Create Model" -->
+	<xs:element name="createNewModels">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userName" type="xs:string" nillable="true"/>
+				<xs:element name="createModel" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="brandCode" type="xs:string"/>
+							<xs:element name="modelNameShort" type="xs:string"/>
+							<xs:element name="workingNumber" type="xs:string" minOccurs="0"/>
+							<xs:element name="creationCenterCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="genderCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="ageGroupCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="productClassCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="rangePlanId" type="xs:long" nillable="true"/>
+							<xs:element name="productManagerName" type="xs:string"/>
+							<xs:element name="subBrand" type="xs:string"/>
+							<xs:element name="developmentOrganization" type="xs:string"/>
+							<xs:element name="modelDescr" type="xs:string" minOccurs="0"/>
+							<xs:element name="modelNameLong" type="xs:string" minOccurs="0"/>
+							<xs:element name="developmentTypeCode" type="xs:string" default="TN" minOccurs="0"/>
+							<xs:element name="targetFOB" type="ctns:floatTwoPrec" minOccurs="0"/>
+							<xs:element name="targetFOBCurrencyCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="rrp" type="xs:decimal" minOccurs="0"/>
+							<xs:element name="rrpCurrencyCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="rrp2" type="xs:decimal" minOccurs="0"/>
+							<xs:element name="rrp2CurrencyCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrktForecast" type="xs:long" minOccurs="0"/>
+							<xs:element name="betterPlaceCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="referenceWorkingNumber" type="xs:string" minOccurs="0"/>
+							<xs:element name="featuresAndBenefit" type="xs:string" minOccurs="0"/>
+							<xs:element name="priceSegmentCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="corporateMrktLineCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="categoryMrktLineCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="salesLineCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="brandAssetCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="sportsCategory" type="xs:string" minOccurs="0"/>
+							<xs:element name="productTypeCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="targetSourcingCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="targetMaterialCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="targetTechnologyCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="techConceptCodes" type="stns:techConceptCodes" minOccurs="0"/>
+							<xs:element name="placeholderFlag" type="xs:string" default="N" minOccurs="0"/>
+							<xs:element name="placeHolderStyleCount" type="xs:long" minOccurs="0"/>
+							<xs:element name="salesUnitCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="constructionTypeCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="manufacturingCapability" type="xs:string" minOccurs="0"/>
+							<xs:element name="quarter" type="xs:string" minOccurs="0"/>
+							<xs:element name="retailIntroDate" type="xs:date" minOccurs="0"/>
+							<xs:element name="retailExitDate" type="xs:date" minOccurs="0"/>
+							<xs:element name="localUsageCodes" type="ctns:localUsageCodes" minOccurs="0"/>
+							<xs:element name="transporationLeadTime" type="xs:string" minOccurs="0"/>
+							<xs:element name="developmentTrackCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="consumerBenefit" type="xs:string" minOccurs="0"/>
+							<xs:element name="targetConsumerCode" type="xs:string" minOccurs="0"/>
+							<xs:element name="mrktProposedSize" type="xs:string" minOccurs="0"/>
+							<xs:element name="sellingRegionCodes" type="ctns:sellingRegionCodes" minOccurs="0"/>
+							<xs:element name="replenishmentFlag" type="xs:string" default="N" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ####END: Input Request for "Create Model" -->
+	<!-- ####START: Output Response for "Create Model" -->
+	<!-- Start: Output Response for "Create Model" -->
+	<xs:complexType name="createNewModelResponse">
+		<xs:sequence>
+			<xs:element name="summary" type="ctns:summary"></xs:element>
+			<xs:element name="createNewModelrespSummary" type="ctns:respSummary" minOccurs="0"/>
+			<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ####END: Output Response for "Create Model" -->
+	<!-- END: "Create Model" use case -->
+	<!-- START: "Copy Model" use case -->
+	<!-- ####START: Input Request for "Copy Model" -->
+	<xs:element name="copyModelRequests">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userName" type="xs:string" nillable="true"/>
+				<xs:element name="copyModel" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="modelRangeId" type="xs:long" nillable="true"/>
+							<xs:element name="rangePlanId" type="xs:long" nillable="true"/>
+							<xs:element name="productManagerName" type="xs:string" minOccurs="0" maxOccurs="1" />
+							<xs:element name="copyArticles" type="xs:string" nillable="true"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ####END: Input Request for "Copy Model" -->
+	<!-- ####START: Output Response for "Copy Model" -->
+	<xs:complexType name="copyModelResponse">
+		<xs:sequence>
+			<xs:element name="summary" type="ctns:summary"></xs:element>
+			<xs:element name="copyModelRespSummary" type="ctns:respSummary" minOccurs="0"/>
+			<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ####END: Output Response for "Copy Model" -->
+	<!-- END: "Copy Model" use case -->
+	<!-- START: "Duplicate Model" use case -->
+	<!-- ####START: Input Request for "Duplicate Model" -->
+	<xs:element name="duplicateModelRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userName" type="xs:string" nillable="true"/>
+				<xs:element name="modelRangeId" type="xs:long" nillable="true"/>
+				<xs:element name="numberOfModels" type="xs:long" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ####END: Input Request for "Duplicate Model" -->
+	<!-- ####START: Output Response for "Duplicate Model" -->
+	<xs:complexType name="duplicateModelResponse">
+		<xs:sequence>
+			<xs:element name="summary" type="ctns:summary"></xs:element>
+			<xs:element name="duplicateModelRespSummary" type="ctns:respSummary" minOccurs="0"/>
+			<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ####END: Output Response for "Duplicate Model" -->
+	<!-- END: "Duplicate Model" use case -->
+	<!-- START: "Carry Over Model" use case -->
+	<!-- ####START: Input Request for "Carry Over Model" -->
+	<xs:element name="carryOverModelRequests">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userName" type="xs:string" nillable="true"/>
+				<xs:element name="carryOverModel" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="modelRangeId" type="xs:long" nillable="true"/>
+							<xs:element name="rangePlanId" type="xs:long" nillable="true"/>
+							<xs:element name="productManagerName" type="xs:string" minOccurs="0" maxOccurs="1" />
+							<xs:element name="carryOverArticles" type="xs:string" nillable="true"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ####END: Input Request for "Carry Over Model" -->
+	<!-- ####START: Output Response for "Carry Over Model" -->
+	<xs:complexType name="carryOverModelResponse">
+		<xs:sequence>
+			<xs:element name="summary" type="ctns:summary"></xs:element>
+			<xs:element name="carryOverModelRespSummary" type="ctns:respSummary" minOccurs="0"/>
+			<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ####END: Output Response for "Carry Over Model" -->
+	<!-- END: "Carry Over Model" use case -->
+	<!-- START: "Update Model" use case -->
+	<!-- ####START: Input Request for "Update Model" -->
+	<xs:element name="updateModelRequests">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userName" type="xs:string"/>
+				<xs:element name="updateModelRequest" type="stns:updateModelRequest" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="updateModelRequest">
+		<xs:sequence>
+			<xs:element name="seasonCode" type="xs:string"/>
+			<xs:element name="modelRangeId" type="xs:long" nillable="true"/>
+			<xs:element name="workingNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelNameShort" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelNameLong" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelDescr" type="xs:string" minOccurs="0"/>
+			<xs:element name="referenceWorkingNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="businessUnitCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="featuresAndBenefit" type="xs:string" minOccurs="0"/>
+			<xs:element name="priceSegmentCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="subBrand" type="xs:string" minOccurs="0"/>
+			<xs:element name="brandAssetCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="constructionTypeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="manufacturingCapability" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetTechnologyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="techConceptCodes" type="stns:techConceptCodes" minOccurs="0"/>
+			<xs:element name="consumerBenefitCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="betterPlaceCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="localUsageCodes" type="ctns:localUsageCodes" minOccurs="0"/>
+			<xs:element name="rrp2" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="rrp2CurrencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="transportLeadTimeCode" type="xs:integer" minOccurs="0"/>
+			<xs:element name="developmentTrackCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetConsumerCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="mrktProposedSize" type="xs:string" minOccurs="0"/>
+			<xs:element name="putOnHold" type="xs:string" minOccurs="0"/>
+			<xs:element name="placeholderFlag" type="xs:string" minOccurs="0"/>
+			<xs:element name="placeHolderStyleCount" type="xs:integer" minOccurs="0"/>
+			<xs:element name="targetFOB" type="ctns:floatTwoPrec" minOccurs="0"/>
+			<xs:element name="targetFOBCurrencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="rrp" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="rrpCurrencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="mrktForecast" type="xs:long" minOccurs="0"/>
+			<xs:element name="productManagerName" type="xs:string" minOccurs="0"/>
+			<xs:element name="corporateMrktLineCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="categoryMrktLineCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="salesLineCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="genderCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ageGroupCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="sportsCategoryCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="productTypeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="creationCenterCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetSourcingCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetMaterialCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="quarter" type="xs:string" minOccurs="0"/>
+			<xs:element name="retailIntroDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="retailExitDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="sellingRegionCodes" type="ctns:sellingRegionCodes" minOccurs="0"/>
+			<xs:element name="dropFlag" type="xs:string" minOccurs="0"/>
+			<xs:element name="replenishmentFlag" type="xs:string" minOccurs="0"/>
+			<xs:element name="indicativeGIM" type="xs:string" minOccurs="0"/>
+			<xs:element name="productDivision" type="xs:string" minOccurs="0"/>
+			<xs:element name="timeLineCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="transportationType" type="xs:string" minOccurs="0"/>
+			<xs:element name="brandCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="developmentRegion" type="xs:string" minOccurs="0"/>
+			<xs:element name="styleName" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="buyReadyStatusDescr" type="xs:string" minOccurs="0"/>
+			<xs:element name="buyReadyValidationStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="earliestBuyReadyDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="salesUnitCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="productClassCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="updateModelNullAttrs" type="stns:updateModelNullAttrs" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="updateModelNullAttrs">
+		<xs:sequence>
+			<xs:element name="updateModelNullAttr" type="stns:updateModelNullAttr" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="updateModelNullAttr">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="workingNumber"/>
+			<xs:enumeration value="modelNameLong"/>
+			<xs:enumeration value="modelDescr"/>
+			<xs:enumeration value="referenceWorkingNumber"/>
+			<xs:enumeration value="businessUnitCode"/>
+			<xs:enumeration value="featuresAndBenefit"/>
+			<xs:enumeration value="priceSegmentCode"/>
+			<xs:enumeration value="subBrand"/>
+			<xs:enumeration value="brandAssetCode"/>
+			<xs:enumeration value="constructionTypeCode"/>
+			<xs:enumeration value="manufacturingCapability"/>
+			<xs:enumeration value="targetTechnologyCode"/>
+			<xs:enumeration value="techConceptCodes"/>
+			<xs:enumeration value="consumerBenefitCode"/>
+			<xs:enumeration value="betterPlaceCode"/>
+			<xs:enumeration value="localUsageCodes"/>
+			<xs:enumeration value="rrp2"/>
+			<xs:enumeration value="rrp2CurrencyCode"/>
+			<xs:enumeration value="transportLeadTimeCode"/>
+			<xs:enumeration value="developmentTrackCode"/>
+			<xs:enumeration value="targetConsumerCode"/>
+			<xs:enumeration value="mrktProposedSize"/>
+			<xs:enumeration value="putOnHold"/>
+			<xs:enumeration value="placeholderFlag"/>
+			<xs:enumeration value="placeHolderStyleCount"/>
+			<xs:enumeration value="targetFOB"/>
+			<xs:enumeration value="targetFOBCurrencyCode"/>
+			<xs:enumeration value="rrp"/>
+			<xs:enumeration value="rrpCurrencyCode"/>
+			<xs:enumeration value="mrktForecast"/>
+			<xs:enumeration value="productManagerName"/>
+			<xs:enumeration value="corporateMrktLineCode"/>
+			<xs:enumeration value="categoryMrktLineCode"/>
+			<xs:enumeration value="salesLineCode"/>
+			<xs:enumeration value="genderCode"/>
+			<xs:enumeration value="ageGroupCode"/>
+			<xs:enumeration value="sportsCategoryCode"/>
+			<xs:enumeration value="productTypeCode"/>
+			<xs:enumeration value="creationCenterCode"/>
+			<xs:enumeration value="targetSourcingCode"/>
+			<xs:enumeration value="targetMaterialCode"/>
+			<xs:enumeration value="quarter"/>
+			<xs:enumeration value="retailIntroDate"/>
+			<xs:enumeration value="retailExitDate"/>
+			<xs:enumeration value="sellingRegionCodes"/>
+			<xs:enumeration value="dropFlag"/>
+			<xs:enumeration value="replenishmentFlag"/>
+			<xs:enumeration value="indicativeGIM"/>
+			<xs:enumeration value="buyReadyStatusDescr"/>
+			<xs:enumeration value="buyReadyValidationStatus"/>
+			<xs:enumeration value="earliestBuyReadyDate"/>
+			<xs:enumeration value="salesUnitCode"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- ####END: Input Request for "Update Model" -->
+	<!-- ####START: Output Response for "Update Model" -->
+	<xs:complexType name="updateModelResponse">
+		<xs:sequence>
+			<xs:element name="summary" type="ctns:summary"></xs:element>
+			<xs:element name="updateModelRespSummary" type="ctns:respSummary" minOccurs="0"/>
+			<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ####END: Output Response for "Update Model" -->
+	<!-- END: "Update Model" use case -->
+	<!-- START: "Move Model" use case -->
+	<!-- ####START: Input Request for "Move Model" -->
+	<xs:element name="moveModelRequests">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userName" type="xs:string"/>
+				<xs:element name="toRangeId" type="xs:long" nillable="true"/>
+				<xs:element name="modelRangeIds" type="stns:modelRangeIds"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ####END: Input Request for "Move Model" -->
+	<!-- ####START: Output Response for "Move Model" -->
+	<xs:element name="moveModelResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="summary" type="ctns:summary"></xs:element>
+				<xs:element name="successResponse" type="ctns:respSummary" minOccurs="0"/>
+				<xs:element name="errorResponse" type="ctns:errors" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ####END: Output Response for "Move Model" -->
+	<!-- END: "Move Model" use case -->
+	<!-- START: Model Services: Delete Model use case -->
+	<!-- ####START: Delete Model SOAP Request -->
+	<xs:element name="deleteModelRequests">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userName" type="xs:string"/>
+				<xs:element name="modelRangeIds" type="stns:modelRangeIds" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- The modelSeasonIDs is list of modelSeasonIDs -->
+	<xs:complexType name="modelSeasonIds">
+		<xs:sequence>
+			<xs:element name="modelSeasonId" type="xs:long" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="modelRangeIds">
+		<xs:sequence>
+			<xs:element name="modelRangeId" type="xs:long" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ####END: Delete Model SOAP Request -->
+	<!-- ####START: Delete Model SOAP Resposne -->
+	<xs:complexType name="deleteModelResponse">
+		<xs:sequence>
+			<xs:element name="summary" type="ctns:summary"></xs:element>
+			<xs:element name="deleteModelRespSummary" type="ctns:respSummary" minOccurs="0"/>
+			<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ####END: Delete Model SOAP Resposne -->
+	<!-- END: Model Services: Delete Model use case -->
+	<!-- START: "Release Model" use case -->
+	<!-- ####START: Input Request for "Release Model" -->
+	<xs:element name="releaseModelRequests" type="stns:releaseModelRequests"/>
+	<xs:complexType name="releaseModelRequests">
+		<xs:sequence>
+			<xs:element name="userName" type="xs:string"/>
+			<xs:element name="releaseModel" type="stns:releaseModel" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="releaseModel">
+		<xs:sequence>
+			<xs:element name="modelRangeId" type="xs:long"/>
+			<xs:element name="releaseArticles" type="xs:string" minOccurs="0"/>
+			<xs:element name="seasonCode" type="xs:string"/>
+			<xs:element name="modelNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="workingNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="quarter" type="xs:string" minOccurs="0"/>
+			<xs:element name="retailIntroDate" type="xs:string" minOccurs="0"/>
+			<xs:element name="retailExitDate" type="xs:string" minOccurs="0"/>
+			<xs:element name="timeLineCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="transportationType" type="xs:string" minOccurs="0"/>
+			<xs:element name="productDivision" type="xs:string" minOccurs="0"/>
+			<xs:element name="brandCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="developmentRegion" type="xs:string" minOccurs="0"/>
+			<xs:element name="styleName" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="productManagerName" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ####END: Input Request for "Release Model" -->
+	<!-- ####START: Release Model SOAP Resposne -->
+	<xs:complexType name="releaseModelResponse">
+		<xs:sequence>
+			<xs:element name="summary" type="ctns:summary"></xs:element>
+			<xs:element name="releaseModelResSummary" type="ctns:respSummary" minOccurs="0"/>
+			<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ####END: Release Model SOAP Resposne -->
+	<!-- END: "Release Model" use case -->
+	<xs:element name="copyModelResponse" type="stns:copyModelResponse"/>
+	<xs:element name="createNewModelResponse" type="stns:createNewModelResponse"/>
+	<xs:element name="carryOverModelResponse" type="stns:carryOverModelResponse"/>
+	<xs:element name="duplicateModelResponse" type="stns:duplicateModelResponse"/>
+	<xs:element name="updateModelResponse" type="stns:updateModelResponse"/>
+	<xs:element name="deleteModelResponse" type="stns:deleteModelResponse"/>
+	<xs:element name="releaseModelResponse" type="stns:releaseModelResponse"/>
+
+	<!-- START:  Model Services: Get Models With Subset & Full Attribute 
+		suse cases -->
+	<!-- ####START: Get Models With Subset and Full Attributes SOAP request -->
+	<xs:complexType name="getModelRequest">
+		<xs:sequence>
+			<xs:element name="userName" type="xs:string"/>
+			<xs:element name="seasonCode" type="xs:string"/>
+			<xs:element name="brandCode" type="xs:string"/>
+			<xs:element name="rangePlanId" type="xs:long" minOccurs="0"/>
+			<xs:element name="modelNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="productManagerName" type="xs:string" minOccurs="0"/>
+			<xs:element name="subBrand" type="xs:string" minOccurs="0"/>
+			<xs:element name="mrktDepartment" type="xs:string" minOccurs="0"/>
+			<xs:element name="productDivision" type="xs:string" minOccurs="0"/>
+			<xs:element name="devLocationCodes" type="stns:devLocationCodes" minOccurs="0"/>
+			<xs:element name="sportsCategoryCodes" type="stns:sportsCategoryCodes" minOccurs="0"/>
+			<xs:element name="ageGroupCodes" type="stns:ageGroupCodes" minOccurs="0"/>
+			<xs:element name="genderCodes" type="stns:genderCodes" minOccurs="0"/>
+			<xs:element name="workingNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelName" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelDescr" type="xs:string" minOccurs="0"/>
+			<xs:element name="retailIntroDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="retailExitDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="corporateMrktLineCodes" type="stns:corporateMrktLineCodes" minOccurs="0"/>
+			<xs:element name="categoryMrktLineCodes" type="stns:categoryMrktLineCodes" minOccurs="0"/>
+			<xs:element name="salesLineCodes" type="stns:salesLineCodes" minOccurs="0"/>
+			<xs:element name="productGroupCodes" type="stns:productGroupCodes" minOccurs="0"/>
+			<xs:element name="productTypeCodes" type="stns:productTypeCodes" minOccurs="0"/>
+			<xs:element name="developmentTypeCodes" type="stns:developmentTypeCodes" minOccurs="0"/>
+			<xs:element name="techConceptCodes" type="stns:techConceptCodes" minOccurs="0"/>
+			<xs:element name="mrktForecast" type="xs:long" minOccurs="0"/>
+			<xs:element name="targetFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="rrp" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="buyingVolumeUnit" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="sorting" type="stns:modelSort" minOccurs="0"/>
+			<xs:element name="paginationDetails" type="ctns:pagination"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="devLocationCodes">
+		<xs:sequence>
+			<xs:element name="devLocationCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="devLocationCodes" type="stns:devLocationCodes"/>
+	<xs:complexType name="sportsCategoryCodes">
+		<xs:sequence>
+			<xs:element name="sportsCategoryCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="sportsCategoryCodes" type="stns:sportsCategoryCodes"/>
+	<xs:complexType name="ageGroupCodes">
+		<xs:sequence>
+			<xs:element name="ageGroupCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ageGroupCodes" type="stns:ageGroupCodes"/>
+	<xs:complexType name="genderCodes">
+		<xs:sequence>
+			<xs:element name="genderCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="genderCodes" type="stns:genderCodes"/>
+	<xs:complexType name="corporateMrktLineCodes">
+		<xs:sequence>
+			<xs:element name="corporateMrktLineCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="corporateMrktLineCodes" type="stns:corporateMrktLineCodes"/>
+	<xs:complexType name="categoryMrktLineCodes">
+		<xs:sequence>
+			<xs:element name="categoryMrktLineCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="categoryMrktLineCodes" type="stns:categoryMrktLineCodes"/>
+	<xs:complexType name="salesLineCodes">
+		<xs:sequence>
+			<xs:element name="salesLineCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="salesLineCodes" type="stns:salesLineCodes"/>
+	<xs:complexType name="productGroupCodes">
+		<xs:sequence>
+			<xs:element name="productGroupCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="productGroupCodes" type="stns:productGroupCodes"/>
+	<xs:complexType name="productTypeCodes">
+		<xs:sequence>
+			<xs:element name="productTypeCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="productTypeCodes" type="stns:productTypeCodes"/>
+	<xs:complexType name="developmentTypeCodes">
+		<xs:sequence>
+			<xs:element name="developmentTypeCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="developmentTypeCodes" type="stns:developmentTypeCodes"/>
+	<xs:complexType name="techConceptCodes">
+		<xs:sequence>
+			<xs:element name="techConceptCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="techConceptCodes" type="stns:techConceptCodes"/>
+	<xs:complexType name="getModelsWithSubsetAttrRequest">
+		<xs:sequence>
+			<xs:element name="getModelRequest" type="stns:getModelRequest"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="getModelsWithSubsetAttrRequest" type="stns:getModelsWithSubsetAttrRequest"/>
+
+	<!-- ####END: Get Models With Subset and Full Attributes SOAP request -->
+	<!-- ####START: Get Models With Subset Attribute SOAP Response -->
+	<xs:element name="getModelsWithSubsetAttrResponse" type="stns:getModelsWithSubsetAttrResponse"/>
+	<xs:complexType name="getModelsWithSubsetAttrResponse">
+		<xs:sequence>
+			<xs:element name="modelRangeId" type="xs:long"/>
+			<xs:element name="workingModelNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelName" type="xs:string" minOccurs="0"/>
+			<xs:element name="developmentTypeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="gfr" type="xs:string" minOccurs="0"/>
+			<xs:element name="ageGroupCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="targetFOBCurrencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="rrp" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="rrpCurrencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="retailIntroDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="mrktForecast" type="xs:long" minOccurs="0"/>
+			<xs:element name="modelStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="totalArticleCount" type="xs:long" minOccurs="0"/>
+			<xs:element name="plannedArticleCount" type="xs:long" minOccurs="0"/>
+			<xs:element name="onHoldArticleCount" type="xs:long" minOccurs="0"/>
+			<xs:element name="releasedArticleCount" type="xs:long" minOccurs="0"/>
+			<xs:element name="dropArticleCount" type="xs:long" minOccurs="0"/>
+			<xs:element name="buyingVolumeUnit" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="indicativeGIM" type="xs:double" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- As per the service request, we need to get the list of response objects -->
+	<xs:complexType name="getModelsWithSubsetAttrResponses">
+		<xs:sequence>
+			<xs:element name="getModelsWithSubsetAttrResponse" type="stns:getModelsWithSubsetAttrResponse" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="getModelsWithSubsetAttrResponses" type="stns:getModelsWithSubsetAttrResponses"/>
+
+	<!-- ####END: Get Models With Subset Attributes SOAP Response -->
+	<!-- END:  Model Services:get Models With Subset Attributes use  cases -->
+	<!-- START:  Model Services:GetModelsById use case -->
+	<!-- ####START: GetModelsById SOAP request -->
+	<xs:element name="getModelsByIdRequest" type="stns:getModelsByIdRequest"/>
+	<xs:complexType name="getModelsByIdRequest">
+		<xs:sequence>
+			<xs:element name="userName" type="xs:string"/>
+			<xs:element name="modelRangeIds" type="stns:modelRangeIds"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="modelRangeIds" type="stns:modelRangeIds"/>
+
+	<!-- ####END: GetModelsById SOAP request -->
+	<!-- ####START: GetModelsById SOAP response -->
+	<!-- If the Users are providing the list of inputs in the service request, 
+		then they need to get the list of response objects -->
+	<xs:complexType name="getModelsByIdResponses">
+		<xs:sequence>
+			<xs:element name="getModelResponse" type="stns:getModelResponse" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getModelResponse">
+		<xs:complexContent>
+			<xs:extension base="ctns:modelAttrsResponseBase">
+				<xs:sequence>
+					<xs:element name="modelRangeId" type="xs:long"/>
+					<xs:element name="modelCount" type="xs:long" minOccurs="0"/>
+					<xs:element name="articleCount" type="xs:long" minOccurs="0"/>
+					<xs:element name="plannedArticleCount" type="xs:long" minOccurs="0"/>
+					<xs:element name="onHoldArticleCount" type="xs:long" minOccurs="0"/>
+					<xs:element name="releasedArticleCount" type="xs:long" minOccurs="0"/>
+					<xs:element name="dropArticleCount" type="xs:long" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="getModelResponse" type="stns:getModelResponse"/>
+	<xs:element name="getModelsByIdResponses" type="stns:getModelsByIdResponses"/>
+
+	<!-- ####END: GetModelsById & Get Models With Full 
+		Attrbute SOAP response -->
+	<!-- END: Model Services:GetModelsById use case -->
+	<!-- START: Model Services:get Models With Full Attributes use case -->
+	<!-- ####START: Get Models With Full  Attrbute SOAP request -->
+	<!-- Input parameters for get Models With Full Attributes -->
+	<xs:complexType name="getModelsWithFullAttrRequest">
+		<xs:sequence>
+			<xs:element name="getModelRequest" type="stns:getModelRequest"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="getModelsWithFullAttrRequest" type="stns:getModelsWithFullAttrRequest"/>
+
+	<!-- ####END: Get Models With Full  Attrbute SOAP request -->
+	<!-- ####START: Get Models With Full  Attrbute SOAP response -->
+	<xs:complexType name="getModelsWithFullAttrResponses">
+		<xs:sequence>
+			<xs:element name="getModelResponse" type="stns:getModelResponse" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="getModelsWithFullAttrResponses" type="stns:getModelsWithFullAttrResponses"/>
+
+	<!-- ####END: Get Models With Full  Attrbute SOAP response -->
+	<!-- END: Model Services:get Models With Full Attributes use case -->
+	<!--END: Generic Complex types for sorting and pagination -->
+	<xs:complexType name="modelSort">
+		<xs:sequence>
+			<xs:element name="modelSortCriteria" type="stns:modelSortCriteria" maxOccurs="8"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="modelSortCriteria">
+		<xs:sequence>
+			<xs:element name="columnName" type="stns:modelSortColumns"/>
+			<xs:element name="sortOrder" type="ctns:sortOrder" default="ASC"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="modelSortColumns">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="creationDate"/>
+			<xs:enumeration value="modelName"/>
+			<xs:enumeration value="workingNumber"/>
+			<xs:enumeration value="targetFOB"/>
+			<xs:enumeration value="rrp"/>
+			<xs:enumeration value="mrktForecast"/>
+			<xs:enumeration value="retailIntroDate"/>
+			<xs:enumeration value="buyingVolumeUnit"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- START: "GetTechnicalMOdelIDs" use case -->
+	<!-- ####START: Input Request for "GetTechnicalMOdelIDs" -->
+	<xs:complexType name="modelRangeIdsWithRef">
+		<xs:sequence>
+			<xs:element name="modelRangeId" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:long">
+							<xs:attribute name="seasonCode" type="xs:string"/>
+							<xs:attribute name="identifierType" type="xs:string"/>
+							<xs:attribute name="identifierValue" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="getTechModelIdRequests">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="getTechModelIdRequest" type="stns:getTechModelIdRequest" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="getTechModelIdRequest">
+		<xs:sequence>
+			<xs:element name="seasonCode" type="xs:string"/>
+			<xs:element name="identifierType" type="xs:string"/>
+			<xs:element name="identifierValue" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ####END: Input Request for "GetTechnicalMOdelIDs" -->
+	<!-- ####START: Output Response for "GetTechnicalMOdelIDs" -->
+	<xs:element name="getTechModelIdResponses">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="modelRangeIds" type="stns:modelRangeIdsWithRef"/>
+				<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ####END: Output Response for "GetTechnicalMOdelIDs" -->
+	<!-- END: "GetTechnicalMOdelIDs" use case -->
+	<!-- START: Model Services:GetModelRangeAtrrsById use case -->
+	<!-- ####START: GetModelRangeAttrsById SOAP request -->
+	<xs:element name="getModelRangeAttrsByIdRequest" type="stns:getModelRangeAttrsByIdRequest"/>
+	<xs:complexType name="getModelRangeAttrsByIdRequest">
+		<xs:sequence>
+			<xs:element name="userName" type="xs:string"/>
+			<xs:element name="modelRangeIds" type="stns:modelRangeIds"/>
+			<xs:element name="requiredAttributes" type="stns:requiredAttributes"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="requiredAttributes">
+		<xs:choice>
+			<xs:element name="all" type="xs:string" fixed="ALL"/>
+			<xs:element name="attributeNames" type="stns:modelRangeAttrNames"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="modelRangeAttrNames">
+		<xs:sequence>
+			<xs:element name="modelAttrNames" type="ctns:modelAttrNames" maxOccurs="unbounded"/>
+			<xs:element name="rangeAttrNames" type="ctns:rangeAttrNames" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ####END: GetModelRangeAttrsById SOAP request -->
+	<!-- ####START: GetModelRangeAttrsById SOAP response -->
+	<!-- If the Users are providing the list of inputs in the service request, 
+		then they need to get the list of response objects -->
+	<xs:element name="getModelRangeAttrsByIdResponses" type="stns:getModelRangeAttrsByIdResponses"/>
+	<xs:complexType name="getModelRangeAttrsByIdResponses">
+		<xs:sequence>
+			<xs:element name="getModelRangeAttrsResponse" type="stns:getModelRangeAttrsResponse" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="errors" type="ctns:errors" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getModelRangeAttrsResponse">
+		<xs:sequence>
+			<xs:element name="rangeAttrsResponse" type="ctns:rangeAttrsResponse" minOccurs="0"/>
+			<xs:element name="modelAttrsResponse" type="ctns:modelAttrsResponse"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

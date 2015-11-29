@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:ns2="http://www.adidas.com/sef/ws/schema/commondata" xmlns:ns="http://www.adidas.com/sef/ws/schema/modeldata" xmlns:stns="http://www.adidas.com/sef/ws/schema/model" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.adidas.com/sef/ws/model" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:ctns="http://www.adidas.com/sef/ws/schema/common" jaxb:version="2.0" name="ModelService" targetNamespace="http://www.adidas.com/sef/ws/model">
+    <wsdl:import namespace="http://www.adidas.com/sef/ws/schema/commondata" location="services_master_schema.xsd"/>
+    <wsdl:import namespace="http://www.adidas.com/sef/ws/schema/modeldata" location="ModelService.xsd"/>
+    <wsdl:types>
+        <xs:schema targetNamespace="http://www.adidas.com/sef/ws">
+            <xs:import namespace="http://www.adidas.com/sef/ws/schema/modeldata" schemaLocation="ModelService.xsd"/>
+        </xs:schema>
+    </wsdl:types>
+    <!-- START: Request & Response Binding for "Release Model" -->
+    <wsdl:message name="releaseModelsReqMessage">
+        <wsdl:part element="ns:releaseModelRequests" name="releaseModelRequests"/>
+    </wsdl:message>
+    <wsdl:message name="releaseModelsResMessage">
+        <wsdl:part element="ns:releaseModelResponse" name="releaseModelResponse"/>
+    </wsdl:message>
+    <!-- END: Request & Response Binding for "Release Model" -->
+    <!-- START: Request & Response Binding for "Create Model" -->
+    <wsdl:message name="createNewModelsReqMessage">
+        <wsdl:part element="ns:createNewModels" name="createNewModelsReq"/>
+    </wsdl:message>
+    <wsdl:message name="createNewModelsRespMessage">
+        <wsdl:part element="ns:createNewModelResponse" name="createNewModelRes"/>
+    </wsdl:message>
+    <!-- END: Request & Response Binding for "Create Model" -->
+    <!-- START: Request & Response Binding for "Copy Model" -->
+    <wsdl:message name="copyModelsReqMessage">
+        <wsdl:part element="ns:copyModelRequests" name="copyModelReqs"/>
+    </wsdl:message>
+    <wsdl:message name="copyModelsResMessage">
+        <wsdl:part element="ns:copyModelResponse" name="copyModelRes"/>
+    </wsdl:message>
+    <!-- END: Request & Response Binding for "Copy Model" -->
+    <!-- START: Request & Response Binding for "Duplicate Model" -->
+    <wsdl:message name="dupModReqMessage">
+        <wsdl:part element="ns:duplicateModelRequest" name="dupModelReq"/>
+    </wsdl:message>
+    <wsdl:message name="dupModResMessage">
+        <wsdl:part element="ns:duplicateModelResponse" name="dupModelRes"/>
+    </wsdl:message>
+    <!-- END: Request & Response Binding for "Duplicate Model" -->
+    <!-- START: Request & Response Binding for "Carry Over Model" -->
+    <wsdl:message name="coModsReqMessage">
+        <wsdl:part element="ns:carryOverModelRequests" name="coModelReqs"/>
+    </wsdl:message>
+    <wsdl:message name="coModsRespMessage">
+        <wsdl:part element="ns:carryOverModelResponse" name="coModelRes"/>
+    </wsdl:message>
+    <!-- END: Request & Response Binding for "Carry Over Model" -->
+    <!-- START: Request & Response Binding for "Delete Model" -->
+    <wsdl:message name="deleteModelsRequestMessage">
+        <wsdl:part element="ns:deleteModelRequests" name="deleteModelRequests"/>
+    </wsdl:message>
+    <wsdl:message name="deleteModelsResponseMessage">
+        <wsdl:part element="ns:deleteModelResponse" name="deleteModelResponse"/>
+    </wsdl:message>
+    <!-- END: Request & Response Binding for "Delete Model" -->
+    <!-- START: Request & Response Binding for "Update Model" -->
+    <wsdl:message name="updateModelsRequestMessage">
+        <wsdl:part element="ns:updateModelRequests" name="updateModelReqs"/>
+    </wsdl:message>
+    <wsdl:message name="updateModelsResponseMessage">
+        <wsdl:part element="ns:updateModelResponse" name="updateModelRes"/>
+    </wsdl:message>
+    <!-- END: Request & Response Binding for "Update Model" -->
+    <!-- START: Request & Response Binding for "Move Model" -->
+    <wsdl:message name="moveModelRequestsMessage">
+        <wsdl:part element="ns:moveModelRequests" name="moveModelReqs"/>
+    </wsdl:message>
+    <wsdl:message name="moveModelResponseMessage">
+        <wsdl:part element="ns:moveModelResponse" name="moveModelResp"/>
+    </wsdl:message>
+    <!-- END: Request & Response Binding for "Move Model" -->
+    <!-- START: Request & Response Bindings for "Get Model" use cases-->
+    <wsdl:message name="getModelsWithSubsetAttrRequestMessage">
+        <wsdl:part element="ns:getModelsWithSubsetAttrRequest" name="getModelsWithSubsetAttrRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getModelsWithSubsetAttrResponseMessage">
+        <wsdl:part element="ns:getModelsWithSubsetAttrResponses" name="getModelsWithSubsetAttrResponses"/>
+    </wsdl:message>
+    <wsdl:message name="getModelsByIdRequestMessage">
+        <wsdl:part element="ns:getModelsByIdRequest" name="getModelsByIdRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getModelsByIdResponseMessage">
+        <wsdl:part element="ns:getModelsByIdResponses" name="getModelsByIdResponses"/>
+    </wsdl:message>
+    <wsdl:message name="getModelsWithFullAttrRequestMessage">
+        <wsdl:part element="ns:getModelsWithFullAttrRequest" name="getModelsWithFullAttrRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getModelsWithFullAttrResponseMessage">
+        <wsdl:part element="ns:getModelsWithFullAttrResponses" name="getModelsWithFullAttrResponses"/>
+    </wsdl:message>
+    <wsdl:message name="getModelRangeAttrsByIdRequestMessage">
+        <wsdl:part name="getModelRangeAttrsByIdRequest" element="ns:getModelRangeAttrsByIdRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getModelRangeAttrsByIdResponseMessage">
+        <wsdl:part name="getModelRangeAttrsByIdResponses" element="ns:getModelRangeAttrsByIdResponses"/>
+    </wsdl:message>
+    <!-- END: Request & Response Bindings for "Get Model" use cases-->
+    <wsdl:message name="SystemExcellenceFaultMessage">
+        <wsdl:part name="fault" element="ns2:systemExcellenceException"/>
+    </wsdl:message>
+    <!-- Start: Request & Response Binding for Get Technical MOdel IDs -->
+    <wsdl:message name="getTechModelIDRequestsMessage">
+        <wsdl:part name="getTechModelReq" element="ns:getTechModelIdRequests"/>
+    </wsdl:message>
+    <wsdl:message name="getTechModelIDResponsesMessage">
+        <wsdl:part name="getTechModelResp" element="ns:getTechModelIdResponses"/>
+    </wsdl:message>
+    <!-- End: Request & Response Binding for Get Technical MOdel IDs -->
+    <wsdl:portType name="ModelWs">
+        <!-- START: SOAP Message Binding for "Create Model" -->
+        <wsdl:operation name="createModels">
+            <wsdl:input message="tns:createNewModelsReqMessage"/>
+            <wsdl:output message="tns:createNewModelsRespMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <!-- END: SOAP Message Binding for "Create Model" -->
+        <!-- START: SOAP Message Binding for "Copy Model" -->
+        <wsdl:operation name="copyModels">
+            <wsdl:input message="tns:copyModelsReqMessage"/>
+            <wsdl:output message="tns:copyModelsResMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <!-- END: SOAP Message Binding for "Copy Model" -->
+        <!-- START: SOAP Message Binding for "Duplicate Model" -->
+        <wsdl:operation name="duplicateModel">
+            <wsdl:input message="tns:dupModReqMessage"/>
+            <wsdl:output message="tns:dupModResMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <!-- END: SOAP Message Binding for "Duplicate Model" -->
+        <!-- START: SOAP Message Binding for "Carry Over Model" -->
+        <wsdl:operation name="carryOverModels">
+            <wsdl:input message="tns:coModsReqMessage"/>
+            <wsdl:output message="tns:coModsRespMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <!-- END: SOAP Message Binding for "Carry Over Model" -->
+        <!-- START: SOAP Message Binding for "Delete Model" -->
+        <wsdl:operation name="deleteModels">
+            <wsdl:input message="tns:deleteModelsRequestMessage"/>
+            <wsdl:output message="tns:deleteModelsResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <!-- END: SOAP Message Binding for "Delete Model" -->
+        <!-- START: SOAP Message Binding for "Update Model" -->
+        <wsdl:operation name="updateModels">
+            <wsdl:input message="tns:updateModelsRequestMessage"/>
+            <wsdl:output message="tns:updateModelsResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <!-- END: SOAP Message Binding for "Update Model" -->
+        <!-- START: SOAP Message Binding for "Move Model" -->
+        <wsdl:operation name="moveModels">
+            <wsdl:input message="tns:moveModelRequestsMessage"/>
+            <wsdl:output message="tns:moveModelResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <!-- END: SOAP Message Binding for "Move Model" -->
+        <!-- START: SOAP Message Binding for "Release Model" -->
+        <wsdl:operation name="releaseModels">
+            <wsdl:input message="tns:releaseModelsReqMessage"/>
+            <wsdl:output message="tns:releaseModelsResMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <!-- END: SOAP Message Binding for "Release Model" -->
+        <!-- START: SOAP Message Binding for "Get Model" use cases-->
+        <wsdl:operation name="getModelsWithSubsetAttr">
+            <wsdl:input message="tns:getModelsWithSubsetAttrRequestMessage"/>
+            <wsdl:output message="tns:getModelsWithSubsetAttrResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getModelsById">
+            <wsdl:input message="tns:getModelsByIdRequestMessage"/>
+            <wsdl:output message="tns:getModelsByIdResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getModelsWithFullAttr">
+            <wsdl:input message="tns:getModelsWithFullAttrRequestMessage"/>
+            <wsdl:output message="tns:getModelsWithFullAttrResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getModelRangeAttrsById">
+            <wsdl:input message="tns:getModelRangeAttrsByIdRequestMessage"/>
+            <wsdl:output message="tns:getModelRangeAttrsByIdResponseMessage"/>
+            <wsdl:fault name="fault" message="tns:SystemExcellenceFaultMessage"/>
+        </wsdl:operation>
+        <!-- END: SOAP Message Binding for "Get Model" use cases-->
+        <!-- Start: SOAP Message Binding for Get Technical MOdel IDs -->
+        <wsdl:operation name="getTechModelIDs">
+            <wsdl:input message="tns:getTechModelIDRequestsMessage"/>
+            <wsdl:output message="tns:getTechModelIDResponsesMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <!-- End: SOAP Message Binding for Get Technical MOdel IDs -->
+    </wsdl:portType>
+    <wsdl:binding name="ModelBinding" type="tns:ModelWs">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <!-- START: SOAP Binding for "Create Model" -->
+        <wsdl:operation name="createModels">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/createModels"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <!-- END: SOAP Binding for "Create Model" -->
+        <!-- START: SOAP Binding for "Copy Model" -->
+        <wsdl:operation name="copyModels">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/copyModels"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <!-- END: SOAP Binding for "Copy Model" -->
+        <!-- START: SOAP Binding for "Duplicate Model" -->
+        <wsdl:operation name="duplicateModel">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/duplicateModel"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <!-- END: SOAP Binding for "Duplicate Model" -->
+        <!-- START: SOAP Binding for "Carry Over Model" -->
+        <wsdl:operation name="carryOverModels">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/carryOverModels"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <!-- END: SOAP Binding for "Carry Over Model" -->
+        <!-- START: SOAP Binding for "Update Model" -->
+        <wsdl:operation name="updateModels">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/updateModels"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <!-- END: SOAP Binding for "Update Model" -->
+        <!-- START: SOAP Binding for "Delete Model" -->
+        <wsdl:operation name="deleteModels">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/deleteModels"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <!-- END: SOAP Binding for "Delete Model" -->
+        <!-- START: SOAP Binding for "Move Model" -->
+        <wsdl:operation name="moveModels">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/moveModels"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <!-- END: SOAP Binding for "Move Model" -->
+        <!-- START: SOAP Binding for "Release Model" -->
+        <wsdl:operation name="releaseModels">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/releaseModels"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <!-- END: SOAP Binding for "Release Model" -->
+        <!-- START: SOAP Binding for "Get Model" use cases -->
+        <wsdl:operation name="getModelsWithSubsetAttr">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/getModelsWithSubsetAttr"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getModelsById">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/getModelsById"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getModelsWithFullAttr">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/getModelsWithFullAttr"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <!-- END: SOAP Binding for "Get Model" use cases -->
+        <!-- Start: SOAP Binding for Get Technical MOdel IDs -->
+        <wsdl:operation name="getTechModelIDs">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/getTechModelIDs"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getModelRangeAttrsById">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/getModelRangeAttrsById"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <!-- End: SOAP Binding for Get Technical MOdel IDs  -->
+    </wsdl:binding>
+    <wsdl:service name="ModelWs">
+        <wsdl:documentation>WSDL File for Model Services</wsdl:documentation>
+        <wsdl:port binding="tns:ModelBinding" name="ModelPort">
+            <soap:address location="http://modelservice.adidas-group.com:12348/soap-services/ModelWs"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

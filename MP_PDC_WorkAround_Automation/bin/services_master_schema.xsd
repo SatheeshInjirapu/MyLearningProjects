@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns="http://www.adidas.com/sef/ws/schema/common"
+	 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	 xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	 xmlns:ctns="http://www.adidas.com/sef/ws/schema/commondata"
+	 jaxb:version="2.0"
+	 xml:lang="en"
+	 jaxb:extensionBindingPrefixes="xjc"
+	 targetNamespace="http://www.adidas.com/sef/ws/schema/commondata"
+	 id="services_master_schema"
+	 version="1.0"
+	 elementFormDefault="unqualified"
+	 attributeFormDefault="unqualified">
+
+	<!-- Custom binding for date & dateTime to use Util Date instead of Calendar -->
+	<xs:annotation>
+		<xs:appinfo>
+			<jaxb:globalBindings generateElementProperty="false">
+				<xjc:javaType name="java.util.Date" xmlType="xs:date" adapter="com.adidas.sef.xmladapter.XmlDateAdapter"/>
+				<xjc:javaType name="java.util.Date" xmlType="xs:dateTime" adapter="com.adidas.sef.xmladapter.XmlDateTimeAdapter"/>
+			</jaxb:globalBindings>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:simpleType name="characterType">
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- This is for getting response for multiple requests -->
+	<xs:element name="summary" type="ctns:summary"></xs:element>
+    <xs:complexType name="summary">
+        <xs:sequence>         
+            <xs:element name="summaryMessageCode" type="xs:string"></xs:element>
+            <xs:element name="summaryMessage" type="xs:string"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+	<xs:element name="success" type="ctns:success"/>
+	<xs:complexType name="success">
+		<xs:sequence>
+			<xs:element name="referenceId" type="ctns:referenceId"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="referenceId">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="respSummary">
+		<xs:sequence>
+			<xs:element name="success" type="ctns:success" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="errorDetails">
+		<xs:sequence>
+			<xs:element name="errorCode" type="xs:string"/>
+			<xs:element name="errorMessage" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="error">
+		<xs:sequence>
+			<xs:element name="referenceId" type="xs:string" minOccurs="0"/>
+			<xs:element name="errorDetails" type="ctns:errorDetails" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="error" type="ctns:error"/>
+	<xs:complexType name="errors">
+		<xs:sequence>
+			<xs:element name="error" type="ctns:error" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- START: This is for web fault exception for single request. -->
+	<xs:complexType name="systemExcellenceException">
+		<xs:sequence>
+			<xs:element name="errorCode" type="xs:string"/>
+			<xs:element name="errorMessage" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="systemExcellenceException" type="ctns:systemExcellenceException"/>
+
+	<!-- END: This is for web fault exception for single request. -->
+	<xs:simpleType name="decimalTwoPrec">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="floatTwoPrec">
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999999.99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sortOrder">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ASC"/>
+			<xs:enumeration value="DESC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="sortOrder" type="ctns:sortOrder"/>
+	<xs:complexType name="pagination">
+		<xs:sequence>
+			<xs:element name="pageSize" type="xs:int"/>
+			<xs:element name="pageNumber" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Common Base for range attributes response -->
+	<xs:complexType name="rangeAttrsResponseBase">
+		<xs:sequence>
+			<xs:element name="productDivision" type="xs:string" minOccurs="0"/>
+			<xs:element name="quarter" type="xs:string" minOccurs="0"/>
+
+			<!-- Target Go-in Margin% -->
+			<xs:element name="targetGoInMarginPct" type="xs:double" minOccurs="0"/>
+
+			<!-- Target Net Sales EUR K : Amount in Euro -->
+			<xs:element name="targetNetSalesAmount" type="xs:long" minOccurs="0"/>
+
+			<!-- Target Volume -->
+			<xs:element name="targetVolumeUnits" type="xs:long" minOccurs="0"/>
+
+			<!-- Target # of Models -->
+			<xs:element name="targetModelCount" type="xs:long" minOccurs="0"/>
+
+			<!-- Target # of Articles -->
+			<xs:element name="targetArticleCount" type="xs:long" minOccurs="0"/>
+
+			<!-- Actual Go-in Margin% -->
+			<xs:element name="actGoInMarginPct" type="xs:double" minOccurs="0"/>
+
+			<!-- Actual Net Sales EUR K : Amount in Euro -->
+			<xs:element name="actNetSalesAmnt" type="xs:double" minOccurs="0"/>
+
+			<!-- Actual Marketing Forecast -->
+			<xs:element name="actMrktForecast" type="xs:long" minOccurs="0"/>
+
+			<!-- Actual Buying Volume -->
+			<xs:element name="actBuyingVolume" type="xs:double" minOccurs="0"/>
+
+			<!-- Actual # of Models -->
+			<xs:element name="actModelCnt" type="xs:long" minOccurs="0"/>
+
+			<!-- Actual # of Articles -->
+			<xs:element name="actArticleCnt" type="xs:long" minOccurs="0"/>
+
+			<!-- # of Models (New) -->
+			<xs:element name="newModelCnt" type="xs:long" minOccurs="0"/>
+
+			<!-- # of Models (Carry Over) -->
+			<xs:element name="carryOverModelCnt" type="xs:long" minOccurs="0"/>
+
+			<!-- # of Articles (New) -->
+			<xs:element name="newArticleCnt" type="xs:long" minOccurs="0"/>
+
+			<!-- # of Articles (Carry Over) -->
+			<xs:element name="carryOverArticleCnt" type="xs:long" minOccurs="0"/>
+
+			<!-- Confidential List -->
+			<xs:element name="confidentialList" type="xs:string" minOccurs="0"/>
+			<xs:element name="confidentialFlag" type="xs:string" minOccurs="0"/>
+
+			<!-- # of Articles (New Color) -->
+			<xs:element name="newClrArticleCnt" type="xs:long" minOccurs="0"/>
+
+			<!-- Season Code -->
+			<xs:element name="seasonCode" type="xs:string" minOccurs="0"/>
+
+			<!-- Marketing Department -->
+			<xs:element name="mrktDepartment" type="xs:string" minOccurs="0"/>
+
+			<!-- Range Name -->
+			<xs:element name="rangeName" type="xs:string" minOccurs="0"/>
+
+			<!-- Creation Date -->
+			<xs:element name="creationDate" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="localUsageCodes">
+		<xs:sequence>
+			<xs:element name="localUsageCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sellingRegionCodes">
+		<xs:sequence>
+			<xs:element name="sellingRegionCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="techConceptCodes">
+		<xs:sequence>
+			<xs:element name="techConceptCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="modelAttrsResponseBase">
+		<xs:sequence>
+			<xs:element name="modelName" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="workingNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="gfr" type="xs:string" minOccurs="0"/>
+			<xs:element name="developmentTypeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="carriedOverFrom" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="targetFOBCurrencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="rrp" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="rrpCurrencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelNameLong" type="xs:string" minOccurs="0"/>
+			<xs:element name="modelDescr" type="xs:string" minOccurs="0"/>
+			<xs:element name="rrp2" type="xs:double" minOccurs="0"/>
+			<xs:element name="rrp2CurrencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="mrktForecast" type="xs:long" minOccurs="0"/>
+			<xs:element name="mrktDepartment" type="xs:string" minOccurs="0"/>
+			<xs:element name="betterPlaceCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="productManagerName" type="xs:string" minOccurs="0"/>
+			<xs:element name="referenceWorkingNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="featuresAndBenefit" type="xs:string" minOccurs="0"/>
+			<xs:element name="priceSegmentCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="corporateMrktLineCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="categoryMrktLineCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="salesLineCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="brandAssetCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="sportsCategoryCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="productDivision" type="xs:string" minOccurs="0"/>
+			<xs:element name="productGroupCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="productTypeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="creationCenterCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetSourcingCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetMaterialCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetTechnologyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="techConceptCodes" type="ctns:techConceptCodes" minOccurs="0"/>
+			<xs:element name="developmentOrganization" type="xs:string" minOccurs="0"/>
+			<xs:element name="placeHolderFlag" type="xs:string" minOccurs="0"/>
+			<xs:element name="placeHolderStyleCount" type="xs:long" minOccurs="0"/>
+			<xs:element name="salesUnitCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="constructionTypeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="manufacturingCapability" type="xs:string" minOccurs="0"/>
+			<xs:element name="ageGroupCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="genderCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="productClassCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="quarter" type="xs:string" minOccurs="0"/>
+			<xs:element name="retailIntroDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="retailExitDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="localUsageCodes" type="ctns:localUsageCodes" minOccurs="0"/>
+			<xs:element name="transportLeadTimeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="developmentTrackCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="consumerBenefitCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetConsumerCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="mrktProposedSize" type="xs:string" minOccurs="0"/>
+			<xs:element name="sellingRegionCodes" type="ctns:sellingRegionCodes" minOccurs="0"/>
+			<xs:element name="modelStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="replenishmentflag" type="xs:string" minOccurs="0"/>
+			<xs:element name="factoryName" type="xs:string" minOccurs="0"/>
+			<xs:element name="projectManagerName" type="xs:string" minOccurs="0"/>
+			<xs:element name="glblGoInMarginTgtFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="glblGoInMarginActFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="glblGoInMarginBufferFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="glblGoInMarginBVFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="buyingVolumeUnit" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="lifeCycleStatusCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="lifeCycleStatusDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="indicativeGIM" type="xs:double" minOccurs="0"/>
+			<xs:element name="earliestBuyReadyDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="buyReadyValidationStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="buyReadyStatusDescr" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="modelAttrsResponse">
+		<xs:complexContent>
+			<xs:extension base="ctns:modelAttrsResponseBase">
+				<xs:sequence>
+					<xs:element name="modelRangeId" type="xs:long" minOccurs="0"/>
+					<xs:element name="brandCode" type="xs:string" minOccurs="0"/>
+					<xs:element name="creationDate" type="xs:dateTime" minOccurs="0"/>
+					<xs:element name="dropDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="seasonCode" type="xs:string" minOccurs="0"/>
+					<xs:element name="subBrand" type="xs:string" minOccurs="0"/>
+					<xs:element name="confidentialFlag" type="xs:string" minOccurs="0"/>
+					<xs:element name="successfullyRelDwnStreamFlag" type="xs:string" minOccurs="0"/>
+					<xs:element name="businessSegmentCode" type="xs:string" minOccurs="0"/>
+					<xs:element name="modelReadyForRelease" type="xs:string" minOccurs="0"/>
+					<xs:element name="actualArticleCnt" type="xs:long" minOccurs="0"/>
+					<xs:element name="totalArticleCnt" type="xs:long" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="rangeAttrsResponse">
+		<xs:complexContent>
+			<xs:extension base="ctns:rangeAttrsResponseBase">
+				<xs:sequence>
+					<xs:element name="rangePlanId" type="xs:long" minOccurs="0"/>
+					<xs:element name="totalModelCnt" type="xs:long" minOccurs="0"/>
+					<xs:element name="totalArticleCnt" type="xs:long" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="modelAttrNames">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="modelName"/>
+			<xs:enumeration value="modelNumber"/>
+			<xs:enumeration value="workingNumber"/>
+			<xs:enumeration value="gfr"/>
+			<xs:enumeration value="developmentTypeCode"/>
+			<xs:enumeration value="carriedOverFrom"/>
+			<xs:enumeration value="targetFOB"/>
+			<xs:enumeration value="targetFOBCurrencyCode"/>
+			<xs:enumeration value="rrp"/>
+			<xs:enumeration value="rrpCurrencyCode"/>
+			<xs:enumeration value="modelNameLong"/>
+			<xs:enumeration value="modelDescr"/>
+			<xs:enumeration value="rrp2"/>
+			<xs:enumeration value="rrp2CurrencyCode"/>
+			<xs:enumeration value="mrktForecast"/>
+			<xs:enumeration value="mrktDepartment"/>
+			<xs:enumeration value="betterPlaceCode"/>
+			<xs:enumeration value="productManagerName"/>
+			<xs:enumeration value="referenceWorkingNumber"/>
+			<xs:enumeration value="featuresAndBenefit"/>
+			<xs:enumeration value="priceSegmentCode"/>
+			<xs:enumeration value="corporateMrktLineCode"/>
+			<xs:enumeration value="categoryMrktLineCode"/>
+			<xs:enumeration value="salesLineCode"/>
+			<xs:enumeration value="brandAssetCode"/>
+			<xs:enumeration value="sportsCategoryCode"/>
+			<xs:enumeration value="productDivision"/>
+			<xs:enumeration value="productGroupCode"/>
+			<xs:enumeration value="productTypeCode"/>
+			<xs:enumeration value="creationCenterCode"/>
+			<xs:enumeration value="targetSourcingCode"/>
+			<xs:enumeration value="targetMaterialCode"/>
+			<xs:enumeration value="targetTechnologyCode"/>
+			<xs:enumeration value="techConceptCodes"/>
+			<xs:enumeration value="developmentOrganization"/>
+			<xs:enumeration value="placeHolderFlag"/>
+			<xs:enumeration value="placeHolderStyleCount"/>
+			<xs:enumeration value="salesUnitCode"/>
+			<xs:enumeration value="constructionTypeCode"/>
+			<xs:enumeration value="manufacturingCapability"/>
+			<xs:enumeration value="ageGroupCode"/>
+			<xs:enumeration value="genderCode"/>
+			<xs:enumeration value="productClassCode"/>
+			<xs:enumeration value="quarter"/>
+			<xs:enumeration value="retailIntroDate"/>
+			<xs:enumeration value="retailExitDate"/>
+			<xs:enumeration value="localUsageCodes"/>
+			<xs:enumeration value="transportLeadTimeCode"/>
+			<xs:enumeration value="developmentTrackCode"/>
+			<xs:enumeration value="consumerBenefitCode"/>
+			<xs:enumeration value="targetConsumerCode"/>
+			<xs:enumeration value="mrktProposedSize"/>
+			<xs:enumeration value="sellingRegionCodes"/>
+			<xs:enumeration value="modelStatus"/>
+			<xs:enumeration value="replenishmentflag"/>
+			<xs:enumeration value="factoryName"/>
+			<xs:enumeration value="projectManagerName"/>
+
+			<!-- Glbl Go-In Margin (%) (Target FOB) -->
+			<xs:enumeration value="glblGoInMarginTgtFOB"/>
+
+			<!-- Glbl Go-In Margin (%) (Actual FOB) -->
+			<xs:enumeration value="glblGoInMarginActFOB"/>
+
+			<!-- Glbl Go-In Margin (%) (Buffer FOB) -->
+			<xs:enumeration value="glblGoInMarginBufferFOB"/>
+
+			<!-- Glbl Go-In Margin (%) (BV) -->
+			<xs:enumeration value="glblGoInMarginBVFOB"/>
+			<xs:enumeration value="buyingVolumeUnit"/>
+			<xs:enumeration value="lifeCycleStatusCode"/>
+			<xs:enumeration value="lifeCycleStatusDate"/>
+			<xs:enumeration value="indicativeGIM"/>
+			<xs:enumeration value="earliestBuyReadyDate"/>
+			<xs:enumeration value="buyReadyValidationStatus"/>
+			<xs:enumeration value="buyReadyStatusDescr"/>
+			<xs:enumeration value="modelRangeId"/>
+			<xs:enumeration value="brandCode"/>
+			<xs:enumeration value="creationDate"/>
+			<xs:enumeration value="dropDate"/>
+			<xs:enumeration value="seasonCode"/>
+			<xs:enumeration value="subBrand"/>
+			<xs:enumeration value="confidentialFlag"/>
+			<xs:enumeration value="successfullyRelDwnStreamFlag"/>
+			<xs:enumeration value="businessSegmentCode"/>
+			<xs:enumeration value="modelReadyForRelease"/>
+			<xs:enumeration value="actualArticleCnt"/>
+			<xs:enumeration value="totalArticleCnt"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="rangeAttrNames">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="quarter"/>
+
+			<!-- Target Go-in Margin% -->
+			<xs:enumeration value="targetGoInMarginPct"/>
+
+			<!-- Target Net Sales EUR K : Amount in Euro -->
+			<xs:enumeration value="targetNetSalesAmount"/>
+
+			<!-- Target Volume -->
+			<xs:enumeration value="targetVolumeUnits"/>
+
+			<!-- Target # of Models -->
+			<xs:enumeration value="targetModelCount"/>
+
+			<!-- Target # of Articles -->
+			<xs:enumeration value="targetArticleCount"/>
+
+			<!-- Actual Go-in Margin% -->
+			<xs:enumeration value="actGoInMarginPct"/>
+
+			<!-- Actual Net Sales EUR K : Amount in Euro -->
+			<xs:enumeration value="actNetSalesAmnt"/>
+
+			<!-- Actual Marketing Forecast -->
+			<xs:enumeration value="actMrktForecast"/>
+
+			<!-- Actual Buying Volume -->
+			<xs:enumeration value="actBuyingVolume"/>
+
+			<!-- Actual # of Models -->
+			<xs:enumeration value="actModelCnt"/>
+
+			<!-- Actual # of Articles -->
+			<xs:enumeration value="actArticleCnt"/>
+
+			<!-- # of Models (New) -->
+			<xs:enumeration value="newModelCnt"/>
+
+			<!-- # of Models (Carry Over) -->
+			<xs:enumeration value="carryOverModelCnt"/>
+
+			<!-- # of Articles (New) -->
+			<xs:enumeration value="newArticleCnt"/>
+
+			<!-- # of Articles (Carry Over) -->
+			<xs:enumeration value="carryOverArticleCnt"/>
+			<xs:enumeration value="confidentialList"/>
+			<xs:enumeration value="confidentialFlag"/>
+
+			<!-- # of Articles (New Color) -->
+			<xs:enumeration value="newClrArticleCnt"/>
+
+			<!-- Marketing Department -->
+			<xs:enumeration value="mrktDepartment"/>
+			<xs:enumeration value="rangeName"/>
+			<xs:enumeration value="creationDate"/>
+			<xs:enumeration value="rangePlanId"/>
+			<xs:enumeration value="seasonCode"/>
+  			<xs:enumeration value="productDivision"/>
+			<xs:enumeration value="totalModelCnt" />
+			<xs:enumeration value="totalArticleCnt" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Common Base for article attributes response -->
+	<xs:complexType name="articleFullAttributeResponseBase">
+		<xs:sequence>
+			<xs:element name="articleRangeId" type="xs:long"/>
+			<xs:element name="articleNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="developmentTypeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="carriedOverFrom" type="xs:string" minOccurs="0"/>
+			<xs:element name="productManagerName" type="xs:string" minOccurs="0"/>
+			<xs:element name="quarter" type="xs:string" minOccurs="0"/>
+			<xs:element name="retailIntroDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="retailExitDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="transportLeadTimeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="businessModelCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="mrktClassificationCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="mrktProposedColor" type="xs:string" minOccurs="0"/>
+			<xs:element name="colorName" type="xs:string" minOccurs="0"/>
+			<xs:element name="mrktDepartment" type="xs:string" minOccurs="0"/>
+			<xs:element name="betterPlaceCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="leadColorway" type="xs:string" minOccurs="0"/>
+			<xs:element name="physicalColorway" type="xs:string" minOccurs="0"/>
+			<xs:element name="specialUsageCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="priceSegmentCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="distributionChannels" type="ctns:artDistributionChannels" minOccurs="0"/>
+			<xs:element name="ffmModelCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="articleTypeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ffmModelActual" type="xs:string" minOccurs="0"/>
+			<xs:element name="splUsage" type="xs:string" minOccurs="0"/>
+			<xs:element name="articleStatusCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetFOB" type="xs:double" minOccurs="0"/>
+			<xs:element name="targetFOBCurrencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="actualFOB" type="xs:double" minOccurs="0"/>
+			<xs:element name="bufferFOB" type="xs:double" minOccurs="0"/>
+			<xs:element name="rrp" type="xs:double" minOccurs="0"/>
+			<xs:element name="rrpCurrencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="mrktForecast" type="xs:long" minOccurs="0"/>
+			<xs:element name="developmentTrackCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetConsumerCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="sellingRegionCodes" type="ctns:sellingRegionCodes" minOccurs="0"/>
+			<xs:element name="lifeCycleStatusCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="lifeCycleStatusDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="glblGoInMarginTgtFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="glblGoInMarginBufferFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="glblGoInMarginActFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="glblGoInMarginBVFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="stdGoInMarginTgtFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="stdGoInMarginBufferFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="stdGoInMarginActFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="stdGoInMarginBVFOB" type="ctns:decimalTwoPrec" minOccurs="0"/>
+			<xs:element name="glblNetSales" type="xs:long" minOccurs="0"/>
+			<xs:element name="bvNetSales" type="xs:long" minOccurs="0"/>
+			<xs:element name="buyingVolume" type="ctns:decimalTwoPrec" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="artDistributionChannels">
+		<xs:sequence>
+			<xs:element name="distributionChannelCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:ns2="http://www.adidas.com/sef/ws/schema/commondata" xmlns:ns="http://www.adidas.com/sef/ws/schema/articledata" xmlns:stns="http://www.adidas.com/sef/ws/schema/article" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.adidas.com/sef/ws/article" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:ctns="http://www.adidas.com/sef/ws/schema/common" jaxb:version="2.0" name="ArticleService" targetNamespace="http://www.adidas.com/sef/ws/article">
+    <wsdl:import location="services_master_schema.xsd" namespace="http://www.adidas.com/sef/ws/schema/commondata"/>
+    <wsdl:import location="ArticleService.xsd" namespace="http://www.adidas.com/sef/ws/schema/articledata"/>
+    <jaxws:bindings xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
+        <jaxws:package name="com.adidas.sef.ws"/>
+    </jaxws:bindings>
+    <wsdl:types>
+        <xs:schema targetNamespace="http://www.adidas.com/sef/ws">
+            <xs:import namespace="http://www.adidas.com/sef/ws/schema/articledata" schemaLocation="ArticleService.xsd"/>
+        </xs:schema>
+    </wsdl:types>
+	<!-- Release Article Request & Response Binding Start -->
+    <wsdl:message name="releaseArticleRequestsMessage">
+        <wsdl:part element="ns:releaseArticleRequests" name="releaseArticleRequests"/>
+    </wsdl:message>
+    <wsdl:message name="releaseArticleResponseMessage">
+        <wsdl:part element="ns:releaseArticleResponse" name="releaseArticleResponse"/>
+    </wsdl:message>
+	<!-- Release Article Request & Response Binding Start -->
+	
+	<!-- Create/Copy/Duplicate/CarryOver Article Request & Response Binding 
+		Start -->
+    <wsdl:message name="createArticleRequestsMessage">
+        <wsdl:part element="ns:createArticleRequests" name="createArticleReqs"/>
+    </wsdl:message>
+    <wsdl:message name="createArticleResponseMessage">
+        <wsdl:part element="ns:createArticleResponse" name="createArticleRes"/>
+    </wsdl:message>
+    <wsdl:message name="copyArticleRequestsMessage">
+        <wsdl:part element="ns:copyArticleRequests" name="copyArticleReqs"/>
+    </wsdl:message>
+    <wsdl:message name="copyArticleResponseMessage">
+        <wsdl:part element="ns:copyArticleResponse" name="copyArticleRes"/>
+    </wsdl:message>
+    <wsdl:message name="duplicateArticleRequestsMessage">
+        <wsdl:part element="ns:duplicateArticleRequest" name="duplicateArticleReq"/>
+    </wsdl:message>
+    <wsdl:message name="duplicateArticleResponseMessage">
+        <wsdl:part element="ns:duplicateArticleResponse" name="duplicateArticleRes"/>
+    </wsdl:message>
+    <wsdl:message name="carryOverArticleRequestsMessage">
+        <wsdl:part element="ns:carryOverArticleRequests" name="carryOverArticleReqs"/>
+    </wsdl:message>
+    <wsdl:message name="carryOverArticleResponseMessage">
+        <wsdl:part element="ns:carryOverArticleResponse" name="carryOverArticleRes"/>
+    </wsdl:message>
+	<!-- Create/Copy/Duplicate/CarryOver Article Request & Response Binding 
+		End -->
+	
+	<!-- Update Article Request & Response Binding Start -->
+    <wsdl:message name="updateArticleRequestsMessage">
+        <wsdl:part element="ns:updateArticleRequests" name="updateArticleReqs"/>
+    </wsdl:message>
+    <wsdl:message name="updateArticleResponseMessage">
+        <wsdl:part element="ns:updateArticleResponse" name="updateArticleRes"/>
+    </wsdl:message>
+	<!-- Update Article Request & Response Binding End -->
+	
+	<!-- Delete Article Request & Response Binding Start -->
+    <wsdl:message name="deleteArticleRequestsMessage">
+        <wsdl:part element="ns:deleteArticleRequests" name="deleteArticleReqs"/>
+    </wsdl:message>
+    <wsdl:message name="deleteArticleResponseMessage">
+        <wsdl:part element="ns:deleteArticleResponse" name="deleteArticleRes"/>
+    </wsdl:message>
+	<!-- Delete Article Request & Response Binding End -->
+	
+	<!-- View Article Request & Response Binding Start -->
+    <wsdl:message name="getArticleByIDRequest">
+        <wsdl:part element="ns:getArticleByIdRequest" name="getArtByIDReq"/>
+    </wsdl:message>
+    <wsdl:message name="getArticleByIDResponse">
+        <wsdl:part element="ns:getArticleByIdResponse" name="getArtByIDResp"/>
+    </wsdl:message>
+    <wsdl:message name="getArticleSubAttributesRequest">
+        <wsdl:part element="ns:getArticleSubRequest" name="getArtBySubSetAttrReq"/>
+    </wsdl:message>
+    <wsdl:message name="getArticleSubAttributesResponse">
+        <wsdl:part element="ns:getArticleSubResponse" name="getArtBySubSetAttrResp"/>
+    </wsdl:message>
+    <wsdl:message name="getArticleFullAttributesRequest">
+        <wsdl:part element="ns:getArticleFullRequest" name="getArtByFullAttrReq"/>
+    </wsdl:message>
+    <wsdl:message name="getArticleFullAttributesResponse">
+        <wsdl:part element="ns:getArticleFullResponse" name="getArtByFullAttrResp"/>
+    </wsdl:message>
+    <wsdl:message name="getArticleModelRangeAttrsByIdRequestMessage">
+        <wsdl:part element="ns:getArticleModelRangeAttrsByIdRequest" name="getArticleModelRangeAttrsByIdRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getArticleModelRangeAttrsByIdResponseMessage">
+        <wsdl:part element="ns:getArticleModelRangeAttrsByIdResponses" name="getArticleModelRangeAttrsByIdResponses"/>
+    </wsdl:message>
+	<!-- View Article Request & Response Binding End -->
+	
+	<!--Start: Request & Response Binding Get Technical Article IDs -->
+    <wsdl:message name="getTechArticleIdRequestsMessage">
+        <wsdl:part element="ns:getTechArticleIdRequests" name="getTechArtcleReq"/>
+    </wsdl:message>
+    <wsdl:message name="getTechArticleIdResponsesMessage">
+        <wsdl:part element="ns:getTechArticleIdResponses" name="getTechArtcleResp"/>
+    </wsdl:message>
+	<!-- End: Request & Response Binding Get Technical Article IDs -->
+    <wsdl:message name="SystemExcellenceFaultMessage">
+        <wsdl:part element="ns2:systemExcellenceException" name="fault"/>
+    </wsdl:message>
+    <wsdl:portType name="ArticleWs">
+		<!-- Create/Copy/Duplicate/CarryOver Article SOAP Message Binding Start -->
+        <wsdl:operation name="createArticles">
+            <wsdl:input message="tns:createArticleRequestsMessage"/>
+            <wsdl:output message="tns:createArticleResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+		<!-- Update Article SOAP Message Binding Start -->
+        <wsdl:operation name="updateArticles">
+            <wsdl:input message="tns:updateArticleRequestsMessage"/>
+            <wsdl:output message="tns:updateArticleResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+		<!-- Update Article SOAP Message Binding End -->
+		
+		<!-- Delete Article SOAP Message Binding Start -->
+        <wsdl:operation name="deleteArticles">
+            <wsdl:input message="tns:deleteArticleRequestsMessage"/>
+            <wsdl:output message="tns:deleteArticleResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+		<!-- Delete Article SOAP Message Binding End -->
+        <wsdl:operation name="releaseArticles">
+            <wsdl:input message="tns:releaseArticleRequestsMessage"/>
+            <wsdl:output message="tns:releaseArticleResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <wsdl:operation name="copyArticle">
+            <wsdl:input message="tns:copyArticleRequestsMessage"/>
+            <wsdl:output message="tns:copyArticleResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <wsdl:operation name="duplicateArticle">
+            <wsdl:input message="tns:duplicateArticleRequestsMessage"/>
+            <wsdl:output message="tns:duplicateArticleResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <wsdl:operation name="carryOverArticle">
+            <wsdl:input message="tns:carryOverArticleRequestsMessage"/>
+            <wsdl:output message="tns:carryOverArticleResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getArticlesBySubSetAttr">
+            <wsdl:input message="tns:getArticleSubAttributesRequest"/>
+            <wsdl:output message="tns:getArticleSubAttributesResponse"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getArticlesByFullSetAttr">
+            <wsdl:input message="tns:getArticleFullAttributesRequest"/>
+            <wsdl:output message="tns:getArticleFullAttributesResponse"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getArticlesByID">
+            <wsdl:input message="tns:getArticleByIDRequest"/>
+            <wsdl:output message="tns:getArticleByIDResponse"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getArticleModelRangeAttrsById">
+            <wsdl:input message="tns:getArticleModelRangeAttrsByIdRequestMessage"/>
+            <wsdl:output message="tns:getArticleModelRangeAttrsByIdResponseMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+		<!-- Start: SOAP Message Binding for Get Technical Article IDs -->
+        <wsdl:operation name="getTechArticleIds">
+            <wsdl:input message="tns:getTechArticleIdRequestsMessage"/>
+            <wsdl:output message="tns:getTechArticleIdResponsesMessage"/>
+            <wsdl:fault message="tns:SystemExcellenceFaultMessage" name="fault"/>
+        </wsdl:operation>
+		<!--End: SOAP Message Binding for Get Technical Article IDs -->
+    </wsdl:portType>
+    <wsdl:binding name="ArticleBinding" type="tns:ArticleWs">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="createArticles">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/createArticle"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateArticles">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/updateArticles"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteArticles">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/deleteArticles"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="releaseArticles">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/releaseArticles"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="duplicateArticle">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/duplicateArticle"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="copyArticle">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/copyArticle"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="carryOverArticle">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/carryOverArticle"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getArticlesByID">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/getArticlebyID"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getArticlesBySubSetAttr">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/getArticleSubSetAttributes"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getArticlesByFullSetAttr">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/getArticleFullAttributes"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getArticleModelRangeAttrsById">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/getArticleModelRangeAttrsById"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+		<!-- Start: SOAP Binding for Get Technical Article IDs -->
+        <wsdl:operation name="getTechArticleIds">
+            <soap:operation soapAction="http://www.adidas.com/sef/ws/getTechArticleIds"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+		<!-- End:SOAP Binding for Get Technical Article IDs -->
+    </wsdl:binding>
+    <wsdl:service name="ArticleWs">
+        <wsdl:documentation>WSDL File for Article Services</wsdl:documentation>
+        <wsdl:port binding="tns:ArticleBinding" name="ArticlePort">
+            <soap:address location="http://articleservice.adidas-group.com:12346/soap-services/ArticleWs"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
